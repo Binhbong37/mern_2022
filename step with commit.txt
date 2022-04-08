@@ -1,3 +1,4 @@
+I. section 2: setup ( commit 1. khởi tạo file ban đầu)
 1. Sau khi cài đặt create-react-app
 - copy folder assets từ đầu bài vào src
 - trong src: + xóa App.css
@@ -10,3 +11,31 @@
 -  thay luôn cái logo ( file favicon.ico) => tìm cái đuôi .ico thay vào tên phải là favicon giống ban đầu https://favicon.io/
 3. nomalize.css : File để reset lại tất cả css mặc định
 - import vào file index.js ( trong src)
+
+II. section 3: Landing Page( commit 2. khởi tạo file ban đầu)
+1. giới thiệu về tạo css kiểu dùng 1 thư viện mới : styled-components": "^5.3.3"
+
+III. section 4: First Components ( )
+- hiểu về hình ảnh logo.svg trong react
+- tạo 1 file logo componet để import vào các file sử dụng
++ tạo 1 flle index file này sẽ được import các file có nhiều logic, sau đó sử dụng lại nó sẽ ngắn hơn NHỚ export {} không có deufault
+
+section 5: Router V6 ( )
+- Bản chất giống với các V thấp, thay Switch = Routes
+- Tại folder page tạo các file Register, Dashboar, Error, index import tất cả vào file index rồi từ index export ra để sử dụng ở App
+
+section 6: Error page
+- xử lý hiển thị trang 404 
+
+section 7: Register Page
+- Tạo form đăng ký
+- Dùng Hook để lấy dữ liệu (useEffect, useState)
+- Tạo 1 file formRow đẩy các input vào rồi dùng props để nhận giá trị name, value, type, handleChange
+=> sau đó export để nhận các giá trị từ file Register
+- Tạo thông báo lỗi ở trên đầu khi mà dính validation 
++ Tạo thêm file Alert để hiển thị lỗi trên ( trong components)
++ Tại initialState thêm cho nó showAlert: false tức là kiểm tra nếu có thì hiện
+- Dùng isMember để kiểm tra nếu có chuyển form Login còn chưa có thì form Register
++ Dùng dạng Toggle kích là set lại cái giá trị của isMember
+
+Section 8: React Hooks React Context
