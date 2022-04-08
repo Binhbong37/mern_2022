@@ -39,3 +39,6 @@ section 7: Register Page
 + Dùng dạng Toggle kích là set lại cái giá trị của isMember
 
 Section 8: React Hooks React Context
+- Sử dụng createContext, useContext, useReducer để làm tiếp bài
+- Hiển thị Alert, remove nó sau 5s, 
+- Chú ý những cái config file,sau có gặp phải làm cho gọn gàng
