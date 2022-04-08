@@ -1,0 +1,12 @@
+1. Sau khi cài đặt create-react-app
+- copy folder assets từ đầu bài vào src
+- trong src: + xóa App.css
+	+ App.test.js
+	+ logo.svg
+	+ reportWebVitals.js
+	+ setupTets.js
++ Sửa App.js, index.js
+2. thay đổi tiltle ở index.html ( ở public)
+-  thay luôn cái logo ( file favicon.ico) => tìm cái đuôi .ico thay vào tên phải là favicon giống ban đầu https://favicon.io/
+3. nomalize.css : File để reset lại tất cả css mặc định
+- import vào file index.js ( trong src)
