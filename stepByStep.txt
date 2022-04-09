@@ -1,0 +1,10 @@
+SECTION 9: Sever setup
+- Tạo file đầu tiên với express
+- Sử dụng cú pháp ES6 import file ( sửa ở trong pakage.json)
+- tạo folder middleware, handle routes không tìm thấy ở đó ( lỗi trả về status(404) 
+- Tạo thêm 1 file để catch lỗi 500, lỗi này thường là một middleware 4 parameter (err, req, res, next)
+ + Ở những routers nếu có lỗi thì throw new Error(cho lỗi ở đây) => bên middleware trên sẽ bắt được ở err ( có thể log ra xem)
+ + Và trả về status(500).json({ định nghĩa 1 lỗi khác trong này })
+- Kết nối với mongoose, để ý những option khi lên ver mới sẽ không cần cho vào nữa
+
+SECTION 10:Routes and structure Controller
