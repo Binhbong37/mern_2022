@@ -8,3 +8,5 @@ SECTION 9: Sever setup
 - Kết nối với mongoose, để ý những option khi lên ver mới sẽ không cần cho vào nữa
 
 SECTION 10:Routes and structure Controller
+- Tạo controller, router cho job và auth ( thêm sửa xóa, lấy tất cả)
+- Test bằng Postman đã hoàn thiện 
