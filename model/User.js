@@ -1,0 +1,49 @@
+import mongoose from 'mongoose';
+import validator from 'validator';
+import bcrypt from 'bcryptjs';
+
+const Schema = mongoose.Schema;
+
+const UserSchema = new Schema({
+    email: {
+        type: String,
+        required: [true, 'Plz fill inputEmail'],
+        validate: {
+            validator: validator.isEmail,
+            message: 'Plz enter a valid email!!',
+        },
+        unique: true,
+    },
+    name: {
+        type: String,
+        required: [true, 'Plz fill input name'],
+        minlength: 3,
+        maxlength: 20,
+        trim: true,
+    },
+    lastName: {
+        type: String,
+        trim: true,
+        maxlength: 20,
+        default: 'Last Name',
+    },
+    loctaion: {
+        type: String,
+        trim: true,
+        maxlength: 20,
+        default: 'your city',
+    },
+    password: {
+        type: String,
+        required: [true, 'Plz fill input password'],
+        minlength: 5,
+        maxlength: 20,
+        trim: true,
+    },
+});
+
+UserSchema.pre('save', async function () {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+});
+export default mongoose.model('User', UserSchema);

@@ -10,3 +10,24 @@ SECTION 9: Sever setup
 SECTION 10:Routes and structure Controller
 - Tạo controller, router cho job và auth ( thêm sửa xóa, lấy tất cả)
 - Test bằng Postman đã hoàn thiện 
+
+SECTION 11: Tạo User model va validate email
+SECTION 12: Liên kết với contrller ( try catch để bắt lỗi khi không pass)
+- Đẩy hết lỗi vào middleware đã tạo ( tại contrller phần catch khi rơi vào đó thì
+next(err) => nó sẽ đẩy lỗi về middler 4 parmeter đã có sẵn
+- express-async-errors: Dùng thư viện này nó sẽ hỗ trợ việc k phải viết try cacth nữa, lỗi sẽ được tự next()
+- Thêm một thư viện để tự sinh ra statusCode mã lỗi sẽ được render ra
+
+SECTION 13: Handdler các lỗi về input 
+- Tạo các logic ở file file err middleware, nhận lỗi và trả về ở đây
+	+ Object.values() => 1 obj nó sẽ trả về các giá trị đằng sau của key dạng mảng
+	+ Object.keys() => 1 obj sẽ được trả về key của thuộc tính dưới dạng 1 array 
+- validate chi tiết từng trường ô input, sau đó mới toàn bộ ( dùng một cái class fc)
+- tạo 3 cái class fc, 1 cái extent Error, 2 cái còn lại phụ thuộc cái cha này, extend nó (badrequest, not-found)
+- Tách ra 1 folder errors riêng, rồi import nó vào, chú ý đuôi js
+- Kiểm tra tồn tại email hay chưa rồi thông báo lỗi về
+SECTION 14: haspassword
+- Dùng bcrypt để haspass (lần này hash ở trong model k phải trong controller)
+- chú ý đọc doc của mongoose ( QUAN TRỌNG)
+
+SECTION 15: JWT
