@@ -31,3 +31,6 @@ SECTION 14: haspassword
 - chú ý đọc doc của mongoose ( QUAN TRỌNG)
 
 SECTION 15: JWT
+- Tạo 1 fc trong model User luôn dạng,  UserSchema.methods.createJWT
+- Ở bên authconller, do đã có const user = User.create() => user.createJWT()
++ Tạo biến để lưu nó lại, rồi trả về kèm với người dùng
