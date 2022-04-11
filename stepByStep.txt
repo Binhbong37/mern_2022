@@ -34,3 +34,13 @@ SECTION 15: JWT
 - Tạo 1 fc trong model User luôn dạng,  UserSchema.methods.createJWT
 - Ở bên authconller, do đã có const user = User.create() => user.createJWT()
 + Tạo biến để lưu nó lại, rồi trả về kèm với người dùng
+SECTION 16: Kết nối B.E VS F.E
+- config lại file package.json ( ở phía server)
+ + "client":"npm start --prefix client" => chú ý tên file f.e xem có cần trùng không
+- Dùng fetch hay axios ở f.e để kết nối đều sẽ gặp CORS Errors, cần hiểu và confix cái này
+- Dùng 1 pakage là core import vào phía server rồi bên f.e dùng fetch để lấy sẽ được ( chú ý dữ liệu từ server trả về phải ở dạng res.json() )
+- SyntaxError: Unexpected token R in JSON at position 0 ( LỖI NÀY TỪ SV TRẢ VỀ )
+- Tìm hiểu PROXY 
+
+SECTION 17: Register User F.E
+

@@ -1,4 +1,4 @@
-import express, { json } from 'express';
+import express from 'express';
 const app = express();
 import dotenv from 'dotenv';
 dotenv.config();
@@ -14,11 +14,16 @@ import jobsRouter from './routes/jobRoutes.js';
 import notFoundMiddleware from './middleware/not-found.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
 
+// cors
+
 app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
-    res.send('Hello world');
+    res.json({ msg: 'Hello world' });
+});
+app.get('/api/v1', (req, res) => {
+    res.json({ msg: 'API' });
 });
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/jobs', jobsRouter);
