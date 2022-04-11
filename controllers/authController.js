@@ -1,6 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
 
-import { BadRequest } from '../errors/index.js';
+import { BadRequest, UnAuthenticated } from '../errors/index.js';
 import User from '../model/User.js';
 
 const register = async (req, res) => {
@@ -14,7 +14,7 @@ const register = async (req, res) => {
     }
     const user = await User.create({ name, password, email });
     const token = user.createJWT();
-    res.status(StatusCodes.OK).json({
+    res.status(StatusCodes.CREATED).json({
         user: {
             email: user.email,
             name: user.name,
@@ -22,10 +22,29 @@ const register = async (req, res) => {
             loctaion: user.loctaion,
         },
         token,
+        loctaion: user.loctaion,
     });
 };
-const login = (req, res) => {
-    res.send('Login');
+const login = async (req, res) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+        throw new BadRequest('Plz fill all input');
+    }
+    // check exist user
+    const user = await User.findOne({ email });
+    if (!user) {
+        throw new UnAuthenticated('user is not exist');
+    }
+    // check isMatch pass
+    const isPass = await user.comparePass(password);
+    if (!isPass) {
+        throw new UnAuthenticated('pass is not matches');
+    }
+
+    // PASS het cung tao token
+    const token = user.createJWT();
+    user.password = undefined;
+    res.status(StatusCodes.OK).json({ user, token, location: user.loctaion });
 };
 const updateUser = (req, res) => {
     res.send('Update User');

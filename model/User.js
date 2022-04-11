@@ -54,4 +54,10 @@ UserSchema.methods.createJWT = function () {
     });
     return token;
 };
+
+// compare password
+UserSchema.methods.comparePass = async function (candidatePass) {
+    const isMatch = await bcrypt.compare(candidatePass, this.password);
+    return isMatch;
+};
 export default mongoose.model('User', UserSchema);

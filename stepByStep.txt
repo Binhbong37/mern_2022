@@ -43,4 +43,18 @@ SECTION 16: Kết nối B.E VS F.E
 - Tìm hiểu PROXY 
 
 SECTION 17: Register User F.E
+- Dùng axios để kết nối, nhớ những cái config ở action, ruducer, appContext
+ + POST thì cần gửi kèm data lên server ( chú ý kết quả trả về của axios, cả phần errr phải .response để hiển thị lỗi trả về )
+- Dùng useNavigate để chuyển hướng ( những bản trước hay dùng history)
+ - Sau khi đăng ký thì lưu thông tin ở dưới localStorage ( tạo hàm ở appContext)
++ Tạo hàm xong khi đăng ký thành công thì mới chạy hàm đó => code bên trong sẽ được thực thi
++ set lại cái initial nếu có sẽ lấy từ local còn chưa thì set là null như ban đầu 
 
+SECTION 18: Login User Server
+- Xử lý phần login ở server, unauthenticated , tạo file ở errors 
+- so sánh bcrypt ở model luôn, tạo 1 hàm để so sánh 
+- Các bước vẫn tương tự như đã biết( tìm user, ss pass ) ở controller
+
+
+SECTION 19: Login phía client
+- Tạo giống với register, cũng sẽ tạo action, appContext, ....
