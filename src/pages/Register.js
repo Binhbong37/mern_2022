@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/RegisterPage';
 import { Logo, FormRow, Alerts } from '../components';
 import { useAppContext } from '../context/appContext';
@@ -12,8 +13,15 @@ const initialState = {
 
 const Register = () => {
     const [values, setValues] = useState(initialState);
-
-    const { showAlert, isLoading, displayAlert } = useAppContext();
+    const navigate = useNavigate();
+    const {
+        user,
+        showAlert,
+        isLoading,
+        displayAlert,
+        registerUser,
+        loginUser,
+    } = useAppContext();
 
     const handleChange = (e) => {
         setValues({
@@ -28,8 +36,20 @@ const Register = () => {
         if (!email || !password || (!name && !isMember)) {
             return displayAlert();
         }
-        console.log(values);
+        const currentUser = { name, email, password };
+        if (isMember) {
+            loginUser(currentUser);
+        } else {
+            registerUser(currentUser);
+        }
     };
+    useEffect(() => {
+        if (user) {
+            setTimeout(() => {
+                navigate('/');
+            }, 3000);
+        }
+    }, [user, navigate]);
 
     // hàm để toogle cái isMember
     const toggleMember = () => {
@@ -65,8 +85,12 @@ const Register = () => {
                     value={values.password}
                     handleChange={handleChange}
                 />
-                <button type="sumbit" className="btn btn-block">
-                    {values.isMember ? 'Login' : 'Submit'}
+                <button
+                    type="sumbit"
+                    className="btn btn-block"
+                    disabled={isLoading}
+                >
+                    Submit
                 </button>
                 <p>
                     {values.isMember
