@@ -42,3 +42,5 @@ Section 8: React Hooks React Context
 - Sử dụng createContext, useContext, useReducer để làm tiếp bài
 - Hiển thị Alert, remove nó sau 5s, 
 - Chú ý những cái config file,sau có gặp phải làm cho gọn gàng
+
+Section 20: config lại dashboard trong page
