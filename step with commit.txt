@@ -44,3 +44,13 @@ Section 8: React Hooks React Context
 - Chú ý những cái config file,sau có gặp phải làm cho gọn gàng
 
 Section 20: config lại dashboard trong page
+- Thêm 1 folder dashboard trong page ( tạo 5 file  để hiện thị)
+- Ở file App, tạo 1 route để định hướng các page ( 5 page trên)
+- Tạo 1 ProtectRoutes.JS ở trong page, tạo logic trong đó khi mà chưa có user thì sẽ chuyển hướng hết về Landing
+- Bọc ProtectRoutes.js trong file app ( bên ngoài Sharedashbor) ...
+- Nhớ xem đi xem lại nhiều lần vô
+
+SECTION 21:
+- Tạo bố cục ở shareLayout (basic) response . . .
++ Thêm file ở component ( Navbar, Bigside, Small )
+- Thêm bộ icon ( đã cài rồi dùng thôi ) ở file Navbar
