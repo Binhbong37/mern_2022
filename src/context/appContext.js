@@ -11,6 +11,7 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER_ERROR,
     TOGGLE_SLIDEBAR,
+    LOGOUT_USER,
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -46,15 +47,15 @@ const AppProvider = ({ children }) => {
     };
 
     // Save data in LocalStorage
-    const addUserToLocalStorage = ({ user, token, loctaion }) => {
+    const addUserToLocalStorage = ({ user, token, location }) => {
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('token', token);
-        localStorage.setItem('location', loctaion);
+        localStorage.setItem('location', location);
     };
     const removeUserToLocalStorage = () => {
         localStorage.removeItem('user');
         localStorage.removeItem('token');
-        localStorage.removeItem('loction');
+        localStorage.removeItem('location');
     };
     // register
     const registerUser = async (currentUser) => {
@@ -65,13 +66,13 @@ const AppProvider = ({ children }) => {
                 currentUser
             );
             console.log({ response });
-            const { user, token, loctaion } = response.data;
+            const { user, token, location } = response.data;
             dispatch({
                 type: REGISTER_USER_SUCCESS,
-                payload: { user, token, loctaion },
+                payload: { user, token, location },
             });
             // save in LocalStorage
-            addUserToLocalStorage({ user, token, loctaion });
+            addUserToLocalStorage({ user, token, location });
         } catch (error) {
             console.log(error.response);
             dispatch({
@@ -91,13 +92,14 @@ const AppProvider = ({ children }) => {
                 '/api/v1/auth/login',
                 currentUser
             );
-            const { user, token, loctaion } = data;
+            const { user, token, location } = data;
+
             dispatch({
                 type: LOGIN_USER_SUCCESS,
-                payload: { user, token, loctaion },
+                payload: { user, token, location },
             });
             // save in LocalStorage
-            addUserToLocalStorage({ user, token, loctaion });
+            addUserToLocalStorage({ user, token, location });
         } catch (error) {
             console.log('ERR: ', error.response);
             dispatch({
@@ -114,6 +116,14 @@ const AppProvider = ({ children }) => {
             type: TOGGLE_SLIDEBAR,
         });
     };
+
+    const logoutUser = () => {
+        dispatch({
+            type: LOGOUT_USER,
+        });
+
+        removeUserToLocalStorage();
+    };
     return (
         <AppContext.Provider
             value={{
@@ -122,6 +132,7 @@ const AppProvider = ({ children }) => {
                 registerUser,
                 loginUser,
                 toggleSlidebar,
+                logoutUser,
             }}
         >
             {children}

@@ -58,4 +58,12 @@ SECTION 21:
 - Thêm bộ icon ( đã cài rồi dùng thôi ) ở file Navbar
 
 SECTION 22: Xử lý chi tiết Navbar
-- 
+- Thêm trạng thái cho phần slideBar ( để chung ở action reducer)
+- Dùng useCntext để nhận lại fc, khi click vào nó sẽ đổi true false
+
+- Tương tự với dropdown, dung useState để set trạng thái cho logout, khi clic vào
+thì nó mới hiện và ẩn
+
+- Làm tiếp với dropdown ( logout) khi click vào nó sẽ xóa dữ liệu trong localStorage
+tạo một action và trạng thái mới
+- Sửa lại phần lưu localStorage (location): 

@@ -8,7 +8,10 @@ import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER_ERROR,
     TOGGLE_SLIDEBAR,
+    LOGOUT_USER,
 } from './actions';
+
+import { initialState } from './appContext';
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -69,6 +72,14 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 showSlidebar: !state.showSlidebar,
+            };
+        case LOGOUT_USER:
+            return {
+                ...initialState,
+                user: null,
+                token: null,
+                userLocation: '',
+                jobLocation: '',
             };
         default:
             throw new Error('No action');

@@ -14,7 +14,7 @@ const initialState = {
 const Register = () => {
     const [values, setValues] = useState(initialState);
     const navigate = useNavigate();
-    console.log({ navigate });
+
     const {
         user,
         showAlert,
