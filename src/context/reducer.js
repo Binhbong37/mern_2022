@@ -7,6 +7,7 @@ import {
     LOGIN_USER_BEGIN,
     LOGIN_USER_SUCCESS,
     LOGIN_USER_ERROR,
+    TOGGLE_SLIDEBAR,
 } from './actions';
 
 const reducer = (state, action) => {
@@ -63,6 +64,11 @@ const reducer = (state, action) => {
                 showAlert: true,
                 alertText: action.payload.msg,
                 alertType: 'danger',
+            };
+        case TOGGLE_SLIDEBAR:
+            return {
+                ...state,
+                showSlidebar: !state.showSlidebar,
             };
         default:
             throw new Error('No action');

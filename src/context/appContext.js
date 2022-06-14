@@ -10,6 +10,7 @@ import {
     LOGIN_USER_BEGIN,
     LOGIN_USER_SUCCESS,
     LOGIN_USER_ERROR,
+    TOGGLE_SLIDEBAR,
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -25,6 +26,7 @@ const initialState = {
     token: token,
     userLocation: userLocation || '',
     jobLocation: userLocation || '',
+    showSlidebar: false,
 };
 
 const AppContext = createContext();
@@ -97,7 +99,7 @@ const AppProvider = ({ children }) => {
             // save in LocalStorage
             addUserToLocalStorage({ user, token, loctaion });
         } catch (error) {
-            console.log(error.response);
+            console.log('ERR: ', error.response);
             dispatch({
                 type: LOGIN_USER_ERROR,
                 payload: { msg: error.response.data.msg },
@@ -106,9 +108,21 @@ const AppProvider = ({ children }) => {
 
         removeAlert();
     };
+
+    const toggleSlidebar = () => {
+        dispatch({
+            type: TOGGLE_SLIDEBAR,
+        });
+    };
     return (
         <AppContext.Provider
-            value={{ ...state, displayAlert, registerUser, loginUser }}
+            value={{
+                ...state,
+                displayAlert,
+                registerUser,
+                loginUser,
+                toggleSlidebar,
+            }}
         >
             {children}
         </AppContext.Provider>

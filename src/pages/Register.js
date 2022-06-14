@@ -14,6 +14,7 @@ const initialState = {
 const Register = () => {
     const [values, setValues] = useState(initialState);
     const navigate = useNavigate();
+    console.log({ navigate });
     const {
         user,
         showAlert,
@@ -32,6 +33,7 @@ const Register = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+
         const { name, email, password, isMember } = values;
         if (!email || !password || (!name && !isMember)) {
             return displayAlert();
@@ -47,7 +49,7 @@ const Register = () => {
         if (user) {
             setTimeout(() => {
                 navigate('/');
-            }, 3000);
+            }, 2000);
         }
     }, [user, navigate]);
 

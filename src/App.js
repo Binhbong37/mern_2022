@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Landing, Register, Error, ProtectRoutes } from './pages';
 import { AddJob, Profile, Stats, AllJob, ShareLayout } from './pages/dashboard';
 
