@@ -1,11 +1,10 @@
 import React from 'react';
 import { FaTimes } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
 
 import Wrapper from '../assets/wrappers/SmallSidebar';
 import { useAppContext } from '../context/appContext';
-import links from '../utils/link';
 import Logo from './Logo';
+import NavLinks from './NavLinks';
 
 const SmallSideBar = () => {
     const { showSlidebar, toggleSlidebar } = useAppContext();
@@ -29,26 +28,7 @@ const SmallSideBar = () => {
                     <header>
                         <Logo />
                     </header>
-                    <div className="nav-links">
-                        {links.map((link) => {
-                            const { id, text, path, icon } = link;
-                            return (
-                                <NavLink
-                                    to={path}
-                                    key={id}
-                                    onClick={toggleSlidebar}
-                                    className={({ isActive }) =>
-                                        isActive
-                                            ? 'nav-link active'
-                                            : 'nav-link'
-                                    }
-                                >
-                                    <span className="icon">{icon}</span>
-                                    {text}
-                                </NavLink>
-                            );
-                        })}
-                    </div>
+                    <NavLinks toggleSlidebar={toggleSlidebar} />
                 </div>
             </div>
         </Wrapper>

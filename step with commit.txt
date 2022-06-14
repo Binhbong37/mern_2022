@@ -72,3 +72,7 @@ tạo một action và trạng thái mới
 SECTION 23: Xử lý Small slidebar
 - Tạo 1 folder utils trong đó có 1 file link.js ( Thêm dữ liệu trong đó)
 - Trong file smallSlidebar thêm dữ liệu cho nó
+- Thêm phần hiển thị nội dung trong modal, rồi các css
+
+SECTION24: Qua phần Bigsidebar
+- do phần NavLink sử dụng lại nên sẽ tạo cho nó vào trong 1 cp rồi dùng lại

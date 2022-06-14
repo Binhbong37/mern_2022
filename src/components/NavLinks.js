@@ -1,0 +1,29 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+
+import links from '../utils/link';
+
+const NavLinks = ({ toggleSlidebar }) => {
+    return (
+        <div className="nav-links">
+            {links.map((link) => {
+                const { id, text, path, icon } = link;
+                return (
+                    <NavLink
+                        to={path}
+                        key={id}
+                        onClick={toggleSlidebar}
+                        className={({ isActive }) =>
+                            isActive ? 'nav-link active' : 'nav-link'
+                        }
+                    >
+                        <span className="icon">{icon}</span>
+                        {text}
+                    </NavLink>
+                );
+            })}
+        </div>
+    );
+};
+
+export default NavLinks;
