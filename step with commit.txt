@@ -67,3 +67,8 @@ thì nó mới hiện và ẩn
 - Làm tiếp với dropdown ( logout) khi click vào nó sẽ xóa dữ liệu trong localStorage
 tạo một action và trạng thái mới
 - Sửa lại phần lưu localStorage (location): 
+
+
+SECTION 23: Xử lý Small slidebar
+- Tạo 1 folder utils trong đó có 1 file link.js ( Thêm dữ liệu trong đó)
+- Trong file smallSlidebar thêm dữ liệu cho nó
