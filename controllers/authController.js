@@ -19,10 +19,10 @@ const register = async (req, res) => {
             email: user.email,
             name: user.name,
             lastName: user.lastName,
-            loctaion: user.loctaion,
+            location: user.location,
         },
         token,
-        loctaion: user.loctaion,
+        location: user.location,
     });
 };
 const login = async (req, res) => {
@@ -44,7 +44,7 @@ const login = async (req, res) => {
     // PASS het cung tao token
     const token = user.createJWT();
     user.password = undefined;
-    res.status(StatusCodes.OK).json({ user, token, location: user.loctaion });
+    res.status(StatusCodes.OK).json({ user, token, location: user.location });
 };
 const updateUser = (req, res) => {
     res.send('Update User');

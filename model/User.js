@@ -28,7 +28,7 @@ const UserSchema = new Schema({
         maxlength: 20,
         default: 'Last Name',
     },
-    loctaion: {
+    location: {
         type: String,
         trim: true,
         maxlength: 20,
