@@ -73,3 +73,9 @@ tất cả các route còn lại setup token để không cần copy lại
 với mã đã tạo token nếu đúng gán nó cho req.user rồi next()
 (MỤC đích của gán req.user là từ đây sẽ kiểm tra phải đúng userID này mới cho làm những việc tiếp)
 - Tận dụng thời gian hết hạn của token để kiểm tra cái invalid
+
+SECTION 26: Chi tiết phần update user
+- Thêm logic ở authcontroller
+- Sửa một chút điều kiện ở User (model) phần password
+- this.modifiedPaths() khi có sự thay đổi từ ô nào thì nó sẽ log ra
+- this.isModified('name') ô name có thay đổi thì nó trả về true, còn không thay đổi về false
