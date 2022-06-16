@@ -58,3 +58,18 @@ SECTION 18: Login User Server
 
 SECTION 19: Login phía client
 - Tạo giống với register, cũng sẽ tạo action, appContext, ....
+
+SECTION 25: Làm việc với authenticate
+- video 112: do mỗi lần login sẽ tạo 1 token khác, nên setup trong postmand
+dùng 1 token 
+- tại register ở tab Test tạo:
+{const jsonData = pm.response.json()
+pm.globals.set("token", jsonData.token);}
+copy vào login 
+
+tất cả các route còn lại setup token để không cần copy lại
+
+- Khi đã kiểm tra là có token rồi thì cần lấy token đó ra và so sánh
+với mã đã tạo token nếu đúng gán nó cho req.user rồi next()
+(MỤC đích của gán req.user là từ đây sẽ kiểm tra phải đúng userID này mới cho làm những việc tiếp)
+- Tận dụng thời gian hết hạn của token để kiểm tra cái invalid

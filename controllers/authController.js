@@ -47,6 +47,7 @@ const login = async (req, res) => {
     res.status(StatusCodes.OK).json({ user, token, location: user.location });
 };
 const updateUser = (req, res) => {
+    console.log('COntroller: ', req.user);
     res.send('Update User with token');
 };
 
