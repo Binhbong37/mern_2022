@@ -39,7 +39,7 @@ const UserSchema = new Schema({
         required: [true, 'Plz fill input password'],
         minlength: 5,
         trim: true,
-        select: false,
+        select: true,
     },
 });
 

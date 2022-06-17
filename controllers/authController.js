@@ -32,6 +32,7 @@ const login = async (req, res) => {
     }
     // check exist user
     const user = await User.findOne({ email });
+
     if (!user) {
         throw new UnAuthenticated('user is not exist');
     }
