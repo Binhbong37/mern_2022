@@ -9,6 +9,9 @@ import {
     LOGIN_USER_ERROR,
     TOGGLE_SLIDEBAR,
     LOGOUT_USER,
+    UPDATE_USER_BEGIN,
+    UPDATE_USER_SUCCESS,
+    UPDATE_USER_ERROR,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -31,6 +34,7 @@ const reducer = (state, action) => {
             };
         case REGISTER_USER_BEGIN:
         case LOGIN_USER_BEGIN:
+        case UPDATE_USER_BEGIN:
             return {
                 ...state,
                 isLoading: true,
@@ -59,8 +63,21 @@ const reducer = (state, action) => {
                 alertText: 'Login Successful !! Redirect . . .',
                 alertType: 'success',
             };
+        case UPDATE_USER_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                token: action.payload.token,
+                user: action.payload.user,
+                userLocation: action.payload.loctaion,
+                jobLocation: action.payload.loctaion,
+                showAlert: true,
+                alertText: 'User profile updated',
+                alertType: 'success',
+            };
         case REGISTER_USER_ERROR:
         case LOGIN_USER_ERROR:
+        case UPDATE_USER_ERROR:
             return {
                 ...state,
                 isLoading: false,

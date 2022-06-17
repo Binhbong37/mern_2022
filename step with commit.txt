@@ -85,4 +85,9 @@ SECTION 28: Cài đặt sử dụng axios
 - Cài rồi, có một số cách sử dụng khác thông thường, cố gắng đọc thêm tài liệu
 
 SECTION 29: Update user
-- video 125
+- video 125 đến 127
+- 125 - 126: Mỗi lần có thay đổi phải tạo action để thông báo, và state phải được cập nhập lại
+=> thì Giao diện mới render thay đổi cùng
+action -> context -> reducer
+127: Lưu ý thông báo khi không có headers thì sẽ gọi hàm logout
+

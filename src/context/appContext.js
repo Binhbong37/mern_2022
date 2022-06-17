@@ -12,6 +12,9 @@ import {
     LOGIN_USER_ERROR,
     TOGGLE_SLIDEBAR,
     LOGOUT_USER,
+    UPDATE_USER_BEGIN,
+    UPDATE_USER_ERROR,
+    UPDATE_USER_SUCCESS,
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -144,15 +147,29 @@ const AppProvider = ({ children }) => {
 
     // UpdateUser
     const updateUser = async (currentUsers) => {
+        dispatch({ type: UPDATE_USER_BEGIN });
         try {
             const { data } = await authFetch.patch(
                 '/auth/updateUser',
                 currentUsers
             );
             console.log('udateData: ', data);
+            const { user, token, location } = data;
+            dispatch({
+                type: UPDATE_USER_SUCCESS,
+                payload: { user, token, location },
+            });
+            addUserToLocalStorage({ user, token, location });
         } catch (err) {
             // console.log('UpdateData', err.response);
+            if (err.response.status !== 401) {
+                dispatch({
+                    type: UPDATE_USER_ERROR,
+                    payload: { msg: err.response.data.msg },
+                });
+            }
         }
+        removeAlert();
     };
 
     const toggleSlidebar = () => {
