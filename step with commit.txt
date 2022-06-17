@@ -80,3 +80,9 @@ SECTION24: Qua phần Bigsidebar
 
 SECTION 27: Profile là 1 component update user:
 - lấy dữ liệu sau khi đăng nhập, đăng ký, đổ vào các ô cần update
+
+SECTION 28: Cài đặt sử dụng axios
+- Cài rồi, có một số cách sử dụng khác thông thường, cố gắng đọc thêm tài liệu
+
+SECTION 29: Update user
+- video 125

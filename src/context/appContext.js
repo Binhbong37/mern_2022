@@ -35,6 +35,37 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
+    // Custom axios
+    // 1. Đây là 1 cách
+    // axios.defaults.headers.common['Authorization'] = `Bearer ${state.token}`;
+    // 2. cách khác
+    const authFetch = axios.create({
+        baseURL: '/api/v1',
+    });
+
+    // 3. cách nữa (request)
+    authFetch.interceptors.request.use(
+        (config) => {
+            config.headers.common['Authorization'] = `Bearer ${state.token}`;
+            return config;
+        },
+        (error) => {
+            return Promise.reject(error);
+        }
+    );
+    // 4. cách nữa (response)
+    authFetch.interceptors.response.use(
+        (response) => {
+            return response;
+        },
+        (error) => {
+            console.log(error.response);
+            if (error.response.status === 401) {
+                console.log('AUTH ERR');
+            }
+            return Promise.reject(error);
+        }
+    );
     const displayAlert = () => {
         dispatch({ type: SHOW_ALERT });
         removeAlert();
@@ -113,7 +144,15 @@ const AppProvider = ({ children }) => {
 
     // UpdateUser
     const updateUser = async (currentUsers) => {
-        console.log(currentUsers);
+        try {
+            const { data } = await authFetch.patch(
+                '/auth/updateUser',
+                currentUsers
+            );
+            console.log('udateData: ', data);
+        } catch (err) {
+            // console.log('UpdateData', err.response);
+        }
     };
 
     const toggleSlidebar = () => {
