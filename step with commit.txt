@@ -76,3 +76,7 @@ SECTION 23: Xử lý Small slidebar
 
 SECTION24: Qua phần Bigsidebar
 - do phần NavLink sử dụng lại nên sẽ tạo cho nó vào trong 1 cp rồi dùng lại
+- Tạo logic trong Bigsidebar cho thanh nó trượt ra vào
+
+SECTION 27: Profile là 1 component update user:
+- lấy dữ liệu sau khi đăng nhập, đăng ký, đổ vào các ô cần update

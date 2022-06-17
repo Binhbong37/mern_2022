@@ -111,6 +111,11 @@ const AppProvider = ({ children }) => {
         removeAlert();
     };
 
+    // UpdateUser
+    const updateUser = async (currentUsers) => {
+        console.log(currentUsers);
+    };
+
     const toggleSlidebar = () => {
         dispatch({
             type: TOGGLE_SLIDEBAR,
@@ -133,6 +138,7 @@ const AppProvider = ({ children }) => {
                 loginUser,
                 toggleSlidebar,
                 logoutUser,
+                updateUser,
             }}
         >
             {children}
