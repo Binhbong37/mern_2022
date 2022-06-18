@@ -90,4 +90,21 @@ SECTION 29: Update user
 => thì Giao diện mới render thay đổi cùng
 action -> context -> reducer
 127: Lưu ý thông báo khi không có headers thì sẽ gọi hàm logout
+- Khi token hết hạn logout để còn đăng nhập lại
 
+SECTION 31: Job model bắt đầu làm phần addjob
+- video 131: Thêm cho phần appContext phần khởi tạo ban đầu của addjob
+- video 123: Làm ở file addjob
+
+- Chia phần formRowSelect ra làm 1 cp riêng, dùng như inputValue
++ Sử dụng cho 2 ô select là status, và jobType
+
+- video 136: Tạo 1 action handleChange để nhận lại kết quả của các ô input
+để khi có sự thay đổi thì giao diện sẽ render lại và cập nhật được kết quả
+[action.payload.name]: action.payload.value
+cái này để ở reducer như mọi khi là để ở handleChange lấy luôn value input
+
+- video 137: Làm nút clear dữ liệu
++ Logic là vẫn tạo 1 dòng như flux, action ->appContext -> reducer
+Khi trở về reducer, phần khởi tạo ban đầu initialSate sẽ để những dữ liệu mà khi 
+ấn clear nó hiện về

@@ -12,6 +12,8 @@ import {
     UPDATE_USER_BEGIN,
     UPDATE_USER_SUCCESS,
     UPDATE_USER_ERROR,
+    HANDLE_CHANGE,
+    CLEAR_VALUES,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -97,6 +99,25 @@ const reducer = (state, action) => {
                 token: null,
                 userLocation: '',
                 jobLocation: '',
+            };
+        case HANDLE_CHANGE:
+            return {
+                ...state,
+                [action.payload.name]: action.payload.value,
+            };
+        case CLEAR_VALUES:
+            const intialState = {
+                isEditing: false,
+                editJobId: '',
+                position: '',
+                company: '',
+                jobLocation: state.userLocation,
+                jobType: 'full-time',
+                status: 'pending',
+            };
+            return {
+                ...state,
+                ...intialState,
             };
         default:
             throw new Error('No action');

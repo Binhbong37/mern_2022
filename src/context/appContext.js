@@ -15,6 +15,8 @@ import {
     UPDATE_USER_BEGIN,
     UPDATE_USER_ERROR,
     UPDATE_USER_SUCCESS,
+    HANDLE_CHANGE,
+    CLEAR_VALUES,
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -29,8 +31,17 @@ const initialState = {
     user: user ? JSON.parse(user) : null,
     token: token,
     userLocation: userLocation || '',
-    jobLocation: userLocation || '',
     showSlidebar: false,
+
+    isEditing: false,
+    editJobId: '',
+    position: '',
+    company: '',
+    jobLocation: userLocation || '',
+    jobTypeOptions: ['full-time', 'part-time', 'remote', 'intership'],
+    jobType: 'full-time',
+    statusOptions: ['interview', 'declined', 'pending'],
+    status: 'pending',
 };
 
 const AppContext = createContext();
@@ -64,6 +75,7 @@ const AppProvider = ({ children }) => {
         (error) => {
             console.log(error.response);
             if (error.response.status === 401) {
+                logoutUser();
                 console.log('AUTH ERR');
             }
             return Promise.reject(error);
@@ -161,7 +173,7 @@ const AppProvider = ({ children }) => {
             });
             addUserToLocalStorage({ user, token, location });
         } catch (err) {
-            // console.log('UpdateData', err.response);
+            console.log('UpdateData', err.response);
             if (err.response.status !== 401) {
                 dispatch({
                     type: UPDATE_USER_ERROR,
@@ -185,6 +197,18 @@ const AppProvider = ({ children }) => {
 
         removeUserToLocalStorage();
     };
+
+    // handleChange value
+    const handleChange = ({ name, value }) => {
+        dispatch({
+            type: HANDLE_CHANGE,
+            payload: { name, value },
+        });
+    };
+    // clear value
+    const clearValues = () => {
+        dispatch({ type: CLEAR_VALUES });
+    };
     return (
         <AppContext.Provider
             value={{
@@ -195,6 +219,8 @@ const AppProvider = ({ children }) => {
                 toggleSlidebar,
                 logoutUser,
                 updateUser,
+                handleChange,
+                clearValues,
             }}
         >
             {children}
