@@ -83,3 +83,4 @@ SECTION 26: Chi tiết phần update user
 
 SECTION 30: Bắt đầu xây dựng phần model Job
 - video 129: Đã xong phần model, tiếp là contrller
+- video 130: Làm ở phần contrller

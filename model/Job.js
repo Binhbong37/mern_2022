@@ -1,13 +1,15 @@
 import mongoose from 'mongoose';
 
-const JobSchema = new mongoose.Schema(
+const Schema = mongoose.Schema;
+
+const JobSchema = new Schema(
     {
         company: {
             type: String,
             required: [true, 'Please provide company'],
             maxlength: 50,
         },
-        location: {
+        position: {
             type: String,
             required: [true, 'Please provide location'],
             maxlength: 100,
