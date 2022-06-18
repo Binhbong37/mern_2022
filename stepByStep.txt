@@ -79,3 +79,7 @@ SECTION 26: Chi tiết phần update user
 - Sửa một chút điều kiện ở User (model) phần password
 - this.modifiedPaths() khi có sự thay đổi từ ô nào thì nó sẽ log ra
 - this.isModified('name') ô name có thay đổi thì nó trả về true, còn không thay đổi về false
+
+
+SECTION 30: Bắt đầu xây dựng phần model Job
+- video 129: Đã xong phần model, tiếp là contrller
