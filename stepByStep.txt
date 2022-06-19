@@ -85,3 +85,6 @@ SECTION 30: Bắt đầu xây dựng phần model Job
 - video 129: Đã xong phần model, tiếp là contrller
 - video 130: Làm ở phần contrller, test và chạy được với postmand
 lưu được dữ liệu vào trong db
+
+SECTION 32: Lấy tất cả job từ db
+- video 139: Thêm logic cho phần cotroller getAllJobs
