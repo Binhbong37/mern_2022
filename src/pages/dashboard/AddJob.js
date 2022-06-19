@@ -18,17 +18,22 @@ const AddJob = () => {
         statusOptions,
         handleChange,
         clearValues,
+        createJob,
     } = useAppContext();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!position || !company || !jobLocation) {
-            displayAlert();
+        // if (!position || !company || !jobLocation) {
+        //     displayAlert();
+        //     return;
+        // }
+
+        // Check điều kiện nếu đã có thì là update, còn không thì là thêm mới
+        if (isEditing) {
             return;
         }
-
-        console.log('Created Job');
+        createJob();
     };
 
     const handleJobInput = (e) => {

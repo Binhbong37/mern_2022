@@ -14,6 +14,9 @@ import {
     UPDATE_USER_ERROR,
     HANDLE_CHANGE,
     CLEAR_VALUES,
+    CREATE_JOB_BEGIN,
+    CREATE_JOB_SUCCESS,
+    CREATE_JOB_ERROR,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -37,6 +40,7 @@ const reducer = (state, action) => {
         case REGISTER_USER_BEGIN:
         case LOGIN_USER_BEGIN:
         case UPDATE_USER_BEGIN:
+        case CREATE_JOB_BEGIN:
             return {
                 ...state,
                 isLoading: true,
@@ -77,9 +81,18 @@ const reducer = (state, action) => {
                 alertText: 'User profile updated',
                 alertType: 'success',
             };
+        case CREATE_JOB_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                showAlert: true,
+                alertType: 'success',
+                alertText: 'New job created',
+            };
         case REGISTER_USER_ERROR:
         case LOGIN_USER_ERROR:
         case UPDATE_USER_ERROR:
+        case CREATE_JOB_ERROR:
             return {
                 ...state,
                 isLoading: false,

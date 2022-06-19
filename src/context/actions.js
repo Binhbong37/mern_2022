@@ -23,3 +23,8 @@ export const UPDATE_USER_ERROR = 'UPDATE_USER_ERROR';
 export const HANDLE_CHANGE = 'HANDLE_CHANGE';
 // Clear value
 export const CLEAR_VALUES = 'CLEAR_VALUES';
+
+// Create Job
+export const CREATE_JOB_BEGIN = 'CREATE_JOB_BEGIN';
+export const CREATE_JOB_SUCCESS = 'CREATE_JOB_SUCCESS';
+export const CREATE_JOB_ERROR = 'CREATE_JOB_ERROR';
