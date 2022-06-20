@@ -1,5 +1,6 @@
-import Job from '../model/Job.js';
+import mongoose from 'mongoose';
 import { StatusCodes } from 'http-status-codes';
+import Job from '../model/Job.js';
 
 import { BadRequest, NotFound } from '../errors/index.js';
 import checkPermission from '../utils/checkPermission.js';
@@ -72,8 +73,25 @@ const getAllJobs = async (req, res) => {
         numOfPages: 1,
     });
 };
-const showStats = (req, res) => {
-    res.send('Show star JOB');
+const showStats = async (req, res) => {
+    let stats = await Job.aggregate([
+        { $match: { createdBy: mongoose.Types.ObjectId(req.user.userId) } },
+        { $group: { _id: '$status', count: { $sum: 1 } } },
+    ]);
+
+    stats = stats.reduce((acc, curr) => {
+        const { _id: title, count } = curr;
+        acc[title] = count;
+        return acc;
+    }, {});
+
+    const defaulStats = {
+        pending: stats.pending || 0,
+        declined: stats.declined || 0,
+        interview: stats.interview || 0,
+    };
+    let monthApplycation = [];
+    res.status(StatusCodes.OK).json({ defaulStats, monthApplycation });
 };
 
 export { createJob, deleteJob, getAllJobs, showStats, updateJob };

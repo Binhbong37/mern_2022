@@ -111,3 +111,11 @@ kiểu dữ liệu lưu trữ chú ý cũng phải giống với ở trong mogod
 - video 158: Lấy data để kết nối và đẩy vào mogodb
 + Tạo 1 file populate.js có logic ở trong đó sử dụng mock-data đã tạo
 và kết nối với model JOB, cùng db
+
+SECTION 38: Tạo stats contrller
+- video 160, 161: Mục đích của cuối cùng là làm sao để đếm ra stauts nào trùng nhau
+tổng số lượng mỗi loại, và trả về cái đó
+
+- video 162: Chú ý khi những người khác đăng nhập mà không phải tài khoản Đã đăng
+thì sẽ không hiện số lượng status, chú ý phía giao diện người dùng
+để nó là 0 ( nếu không thì nó sẽ hiện là underfied)
