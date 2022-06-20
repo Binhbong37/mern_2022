@@ -102,3 +102,12 @@ cần xem TH nào là phù hợp
 
  - video 154: delete controller
  + tương tự với edit thôi, chú ý nhé
+
+ SECTION 37: Tạo 1 mockData
+- video 157: Mockaroo: truy cập trang web makaroo.com để làm 1 fake data
++ Chú ý khi tạo fake data những trường tạo phải giống với model, 
+kiểu dữ liệu lưu trữ chú ý cũng phải giống với ở trong mogodb
+
+- video 158: Lấy data để kết nối và đẩy vào mogodb
++ Tạo 1 file populate.js có logic ở trong đó sử dụng mock-data đã tạo
+và kết nối với model JOB, cùng db
