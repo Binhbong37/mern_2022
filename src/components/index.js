@@ -9,6 +9,10 @@ import Job from './Job';
 import SearchContainer from './SearchContainer';
 import JobInfo from './JobInfo';
 import JobsContainer from './JobsContainer';
+import ChartContainer from './ChartContainer';
+import StatsComponent from './StatsComponent';
+import Loading from './Loading';
+import StatsItem from './StatsItem';
 
 export {
     Logo,
@@ -22,4 +26,8 @@ export {
     JobInfo,
     Job,
     SearchContainer,
+    StatsComponent,
+    ChartContainer,
+    Loading,
+    StatsItem,
 };

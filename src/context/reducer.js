@@ -24,6 +24,8 @@ import {
     EDIT_JOB_BEGIN,
     EDIT_JOB_ERROR,
     EDIT_JOB_SUCCESS,
+    SHOW_STATS_BEGIN,
+    SHOW_STATS_SUCCESS,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -106,10 +108,18 @@ const reducer = (state, action) => {
                 numOfPages: action.payload.numOfPages,
             };
         case GET_JOBS_BEGIN:
+        case SHOW_STATS_BEGIN:
             return {
                 ...state,
                 isLoading: true,
                 showAlert: false,
+            };
+        case SHOW_STATS_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                stats: action.payload.stats,
+                monthApplycation: action.payload.monthApplycation,
             };
         case EDIT_JOB_SUCCESS:
             return {

@@ -142,6 +142,12 @@ SECTION 36: SỬA XÓA Ở PHÍA client
 - video 156: Sửa theo flux ( tạo 3 trạng thái)
 + Đã sửa được job từ phía client
 
+SECTION 39: Show stats
+- Vẫn sẽ theo dòng flux
+- video 163: fetch stats
+-video 164: file States page
 
+- Tạo cấu trúc như get job vậy, cũng 1 file nhỏ sau đó impoirt từ từ vào các file lớn hơn
+Nhớ nguyên tắc là props truyền từ cha xuống con, chuyền từ từ như vậy
 
 
