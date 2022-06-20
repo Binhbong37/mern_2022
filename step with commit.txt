@@ -135,5 +135,13 @@ thì chuyển trang về addjob
 + Hiển thị đẹp hơn
 
 video 149: Tạo logic chi tiết cho phần edit job
-- vẫn đi theo cấu trúc flux
+- vẫn đi theo cấu trúc flux ( chỉ có set_get_edit trước)
+
+SECTION 36: SỬA XÓA Ở PHÍA client
+- video 155: xóa ( vẫn theo flux) => Đã xóa thành công
+- video 156: Sửa theo flux ( tạo 3 trạng thái)
++ Đã sửa được job từ phía client
+
+
+
 

@@ -35,3 +35,11 @@ export const GET_JOBS_SUCCESS = 'GET_JOBS_SUCCESS';
 
 // EDIT JOB
 export const GET_EDIT_JOB = 'GET_EDIT_JOB';
+
+// Start edit
+export const EDIT_JOB_BEGIN = 'EDIT_JOB_BEGIN';
+export const EDIT_JOB_SUCCESS = 'EDIT_JOB_SUCCESS';
+export const EDIT_JOB_ERROR = 'EDIT_JOB_ERROR';
+
+// Delete Job
+export const DELETE_JOB = 'DELETE_JOB';

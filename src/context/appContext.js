@@ -23,6 +23,10 @@ import {
     GET_JOBS_BEGIN,
     GET_JOBS_SUCCESS,
     GET_EDIT_JOB,
+    DELETE_JOB,
+    EDIT_JOB_BEGIN,
+    EDIT_JOB_ERROR,
+    EDIT_JOB_SUCCESS,
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -274,9 +278,48 @@ const AppProvider = ({ children }) => {
             payload: { id },
         });
     };
+
+    // sTART edit
+    const editJob = async () => {
+        dispatch({ type: EDIT_JOB_BEGIN });
+        try {
+            const {
+                position,
+                company,
+                jobLocation,
+                jobType,
+                status,
+                editJobId,
+            } = state;
+            await authFetch.patch(`/jobs/${editJobId}`, {
+                company,
+                position,
+                jobType,
+                jobLocation,
+                status,
+            });
+            dispatch({ type: EDIT_JOB_SUCCESS });
+            dispatch({ type: CLEAR_VALUES });
+        } catch (error) {
+            if (error.response.status === 401) return;
+            dispatch({
+                type: EDIT_JOB_ERROR,
+                paylod: { msg: error.response.data.msg },
+            });
+        }
+        removeAlert();
+    };
     // Delete job
-    const deleteJob = (id) => {
-        console.log(`Delete with id ${id} `);
+    const deleteJob = async (id) => {
+        dispatch({ type: DELETE_JOB });
+
+        try {
+            await authFetch.delete(`/jobs/${id}`);
+            getJobs();
+        } catch (error) {
+            console.log(error.response.data.msg);
+            logoutUser();
+        }
     };
 
     return (
@@ -295,6 +338,7 @@ const AppProvider = ({ children }) => {
                 getJobs,
                 setEditJob,
                 deleteJob,
+                editJob,
             }}
         >
             {children}

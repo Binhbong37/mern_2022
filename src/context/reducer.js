@@ -20,6 +20,10 @@ import {
     GET_JOBS_BEGIN,
     GET_JOBS_SUCCESS,
     GET_EDIT_JOB,
+    DELETE_JOB,
+    EDIT_JOB_BEGIN,
+    EDIT_JOB_ERROR,
+    EDIT_JOB_SUCCESS,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -44,6 +48,7 @@ const reducer = (state, action) => {
         case LOGIN_USER_BEGIN:
         case UPDATE_USER_BEGIN:
         case CREATE_JOB_BEGIN:
+        case EDIT_JOB_BEGIN:
             return {
                 ...state,
                 isLoading: true,
@@ -106,10 +111,19 @@ const reducer = (state, action) => {
                 isLoading: true,
                 showAlert: false,
             };
+        case EDIT_JOB_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                showAlert: true,
+                alertText: 'Job Updated',
+                alertType: 'success',
+            };
         case REGISTER_USER_ERROR:
         case LOGIN_USER_ERROR:
         case UPDATE_USER_ERROR:
         case CREATE_JOB_ERROR:
+        case EDIT_JOB_ERROR:
             return {
                 ...state,
                 isLoading: false,
@@ -162,6 +176,11 @@ const reducer = (state, action) => {
                 jobLocation,
                 jobType,
                 status,
+            };
+        case DELETE_JOB:
+            return {
+                ...state,
+                isLoading: true,
             };
         default:
             throw new Error('No action');
