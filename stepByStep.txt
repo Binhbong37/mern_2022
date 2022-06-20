@@ -88,3 +88,17 @@ lưu được dữ liệu vào trong db
 
 SECTION 32: Lấy tất cả job từ db
 - video 139: Thêm logic cho phần cotroller getAllJobs
+
+SECTION 35: Làm phần edit và delete job
+- video 150, 151: Logic cho phần update mongoose cung cấp nhiều cách tiếp cận,
+cần xem TH nào là phù hợp
+
+- Video 152: V.đề: Tài khoản đăng ký khác có thể sửa được job của một tài khoản khác
+(không phải của mình tạo)
++ Điều kiện, những job k phải mình tạo chỉ có thể xem
+ 
+ - video 153: Cần kiểm tra loại của objectID ( cái này quan trọng vì để so sánh 2 cái với nhau)
+ + Tạo 1 file để so sánh, checkPermission
+
+ - video 154: delete controller
+ + tương tự với edit thôi, chú ý nhé
