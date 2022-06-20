@@ -17,6 +17,9 @@ import {
     CREATE_JOB_BEGIN,
     CREATE_JOB_SUCCESS,
     CREATE_JOB_ERROR,
+    GET_JOBS_BEGIN,
+    GET_JOBS_SUCCESS,
+    GET_EDIT_JOB,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -89,6 +92,20 @@ const reducer = (state, action) => {
                 alertType: 'success',
                 alertText: 'New job created',
             };
+        case GET_JOBS_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                jobs: action.payload.jobs,
+                totalJobs: action.payload.totalJobs,
+                numOfPages: action.payload.numOfPages,
+            };
+        case GET_JOBS_BEGIN:
+            return {
+                ...state,
+                isLoading: true,
+                showAlert: false,
+            };
         case REGISTER_USER_ERROR:
         case LOGIN_USER_ERROR:
         case UPDATE_USER_ERROR:
@@ -131,6 +148,20 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 ...intialState,
+            };
+        case GET_EDIT_JOB:
+            const job = state.jobs.find((job) => job._id === action.payload.id);
+            const { _id, position, company, jobLocation, jobType, status } =
+                job;
+            return {
+                ...state,
+                isEditing: true,
+                editJobId: _id,
+                position,
+                company,
+                jobLocation,
+                jobType,
+                status,
             };
         default:
             throw new Error('No action');

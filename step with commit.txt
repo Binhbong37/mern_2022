@@ -114,3 +114,26 @@ Khi trở về reducer, phần khởi tạo ban đầu initialSate sẽ để nh
 - vẫn là theo luồng giống redux đi từ action -> appContext -> reducer
 - Đã tạo được 1 job từ phía client
 
+SECTION 33: Lấy jobs để hiển thị cho người dùng
+- video 141: khởi tạo file ban đầu với dữ liệu là mặc định
+- video 142: Lại tạo luồng như flux
++ Lấy được dữ liệu từ server, đã dùng useEffect để test thử
+- video 143: Phần logout cần quay lại xem để hiểu rõ hơn
+- video 144: allJobs page setup: tạo giao diện ở trang allJobs
++ Tạo 1 số cp để phục vụ việc hiển thị (SearchContainer, Jobcontainer ...)
+
+- video 145: Cho logic vào file JobsContainer
++ Tạo dữ liệu lấy từ appContext, dùng useEffect cẩn thận
+-Video 146: Sử dụng thư viện moment
+
+- video 147: Tạo editJob, và delete job ở appContext (nhớ lấy id của từng sp)
+- sau đó sẽ xử lý ở phần cp job (đơn)
++ Đã lấy được id khi click vào 2 nut edit và delete, khi clic vào edit
+thì chuyển trang về addjob
+
+- video 148:Logic ở jobInfo
++ Hiển thị đẹp hơn
+
+video 149: Tạo logic chi tiết cho phần edit job
+- vẫn đi theo cấu trúc flux
+

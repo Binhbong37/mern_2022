@@ -28,3 +28,10 @@ export const CLEAR_VALUES = 'CLEAR_VALUES';
 export const CREATE_JOB_BEGIN = 'CREATE_JOB_BEGIN';
 export const CREATE_JOB_SUCCESS = 'CREATE_JOB_SUCCESS';
 export const CREATE_JOB_ERROR = 'CREATE_JOB_ERROR';
+
+// GET all Jobs
+export const GET_JOBS_BEGIN = 'GET_JOBS_BEGIN';
+export const GET_JOBS_SUCCESS = 'GET_JOBS_SUCCESS';
+
+// EDIT JOB
+export const GET_EDIT_JOB = 'GET_EDIT_JOB';
