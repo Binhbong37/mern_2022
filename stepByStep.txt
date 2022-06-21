@@ -122,4 +122,11 @@ thì sẽ không hiện số lượng status, chú ý phía giao diện người
 
 SECTION 40: Tiếp tục làm việc để hiển thị phần cột, data trả về cần được refactor
 - 167, 168: Trả lời câu hỏi muốn server trả về cái gì, nhưng logic
-bên trong phục vụ việc trả data về gọn hơn và sẽ dùng cho lần sau
+bên trong phục vụ việc trả data về gọn hơn và sẽ dùng cho việc hiển thị giao diện
+
+SECTION 42:
+- Làm các chức năng sort, filter
+- Chú ý một số mã check điều kiện của search (string)
+
+- Sort sẽ là trường xếp cuối sau khi đã thỏa mãn các điều kiện serach,ư
+ vì sau khi có kết quả thì mới thực hiện sắp xếp

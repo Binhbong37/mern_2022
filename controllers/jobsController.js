@@ -66,8 +66,39 @@ const deleteJob = async (req, res) => {
     res.status(StatusCodes.OK).json({ msg: 'Success! Job removed' });
 };
 const getAllJobs = async (req, res) => {
-    const jobs = await Job.find({ createdBy: req.user.userId });
+    const { status, jobType, sort, search } = req.query;
 
+    const queryObj = {
+        createdBy: req.user.userId,
+    };
+
+    // Check cac điều kiện xảy ra
+    if (status !== 'all') {
+        queryObj.status = status;
+    }
+    if (jobType !== 'all') {
+        queryObj.jobType = jobType;
+    }
+    if (search) {
+        queryObj.position = { $regex: search, $options: 'i' };
+    }
+    let result = Job.find(queryObj);
+
+    // Sort
+    if (sort === 'latest') {
+        result = result.sort('-createdAt');
+    }
+    if (sort === 'oldest') {
+        result = result.sort('createdAt');
+    }
+    if (sort === 'a-z') {
+        result = result.sort('position');
+    }
+    if (sort === 'z-a') {
+        result = result.sort('-position');
+    }
+
+    const jobs = await result;
     res.status(StatusCodes.OK).json({
         jobs,
         totalJobs: jobs.length,
