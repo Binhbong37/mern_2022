@@ -47,3 +47,6 @@ export const DELETE_JOB = 'DELETE_JOB';
 // Stats
 export const SHOW_STATS_BEGIN = 'SHOW_STATS_BEGIN';
 export const SHOW_STATS_SUCCESS = 'SHOW_STATS_SUCCESS';
+
+// Clear filter
+export const CLEAR_FILTERS = 'CLEAR_FILTERS';

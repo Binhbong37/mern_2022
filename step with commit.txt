@@ -156,3 +156,11 @@ SECTION 41:
 - video 170, 171: giới thiệu 1 thư viện mới barchart
 - video 172: Sử dụng thư viện chart
 - Sử đụng được thư viện để thêm 2 biểu đồ, đường và cột vào trong pr
+
+SECTION 43: Form tìm kiếm, sắp xếp, lọc ở client
+- video 180: Khởi tạo các biến tìm kiếm, lọc, sắp xếp ban đầu ở appContext
+-vdieo  182: Hoàn thiện phần form tìm kiếm, mặt ui
+- vdieo 183: Xóa được các ô khi ấn nhầm, clear filter
+- video 184: Hoàn thiện phần search gọi lên api
++ Làm thì chú ý xem chỗ nào gọi aip để hiển thị, thường là ở useEffect
+xong rồi, bây giờ có thamn số thay đổi thì cần render lại, nên sẽ dùng nhiều đến tham số thứ 2

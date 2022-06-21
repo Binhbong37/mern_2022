@@ -26,6 +26,7 @@ import {
     EDIT_JOB_SUCCESS,
     SHOW_STATS_BEGIN,
     SHOW_STATS_SUCCESS,
+    CLEAR_FILTERS,
 } from './actions';
 
 import { initialState } from './appContext';
@@ -191,6 +192,14 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 isLoading: true,
+            };
+        case CLEAR_FILTERS:
+            return {
+                ...state,
+                search: '',
+                searchStatus: 'all',
+                searchType: 'all',
+                sort: 'latest',
             };
         default:
             throw new Error('No action');
