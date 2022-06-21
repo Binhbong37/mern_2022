@@ -130,3 +130,7 @@ SECTION 42:
 
 - Sort sẽ là trường xếp cuối sau khi đã thỏa mãn các điều kiện serach,ư
  vì sau khi có kết quả thì mới thực hiện sắp xếp
+
+ SECTION 44: Phân trang
+ - video 186: Chi tiết logic cho phân trang
+ - video 187: Hiển thị phần số trang ra, tổng trang hiển thị phải là tổng của item đang có

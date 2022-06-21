@@ -73,15 +73,16 @@ const getAllJobs = async (req, res) => {
     };
 
     // Check cac điều kiện xảy ra
-    if (status !== 'all') {
+    if (status && status !== 'all') {
         queryObj.status = status;
     }
-    if (jobType !== 'all') {
+    if (jobType && jobType !== 'all') {
         queryObj.jobType = jobType;
     }
     if (search) {
         queryObj.position = { $regex: search, $options: 'i' };
     }
+
     let result = Job.find(queryObj);
 
     // Sort
@@ -98,11 +99,19 @@ const getAllJobs = async (req, res) => {
         result = result.sort('-position');
     }
 
+    // panigation
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+    result = result.skip(skip).limit(limit);
     const jobs = await result;
+
+    const totalJobs = await Job.countDocuments(queryObj);
+    const numOfPages = Math.ceil(totalJobs / limit);
     res.status(StatusCodes.OK).json({
         jobs,
-        totalJobs: jobs.length,
-        numOfPages: 1,
+        totalJobs,
+        numOfPages,
     });
 };
 const showStats = async (req, res) => {
