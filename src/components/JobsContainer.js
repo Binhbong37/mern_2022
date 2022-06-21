@@ -4,6 +4,7 @@ import { useAppContext } from '../context/appContext';
 import Job from './Job';
 import Loading from './Loading';
 import Wrapper from '../assets/wrappers/JobsContainer.js';
+import PageBtnContainer from './PageBtnContainer';
 
 const JobsContainer = () => {
     const {
@@ -16,11 +17,13 @@ const JobsContainer = () => {
         searchStatus,
         searchType,
         sort,
+        numOfPages,
     } = useAppContext();
 
     useEffect(() => {
         getJobs();
-    }, [search, searchStatus, searchType, sort]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [page, search, searchStatus, searchType, sort]);
 
     if (isLoading) {
         return <Loading center />;
@@ -43,6 +46,8 @@ const JobsContainer = () => {
                     return <Job key={index} {...job} />;
                 })}
             </div>
+            {/* Panigation */}
+            {numOfPages > 1 && <PageBtnContainer />}
         </Wrapper>
     );
 };

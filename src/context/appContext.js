@@ -30,6 +30,7 @@ import {
     SHOW_STATS_BEGIN,
     SHOW_STATS_SUCCESS,
     CLEAR_FILTERS,
+    CHANGE_PAGE,
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -103,10 +104,8 @@ const AppProvider = ({ children }) => {
             return response;
         },
         (error) => {
-            console.log(error.response);
             if (error.response.status === 401) {
                 logoutUser();
-                console.log('AUTH ERR');
             }
             return Promise.reject(error);
         }
@@ -141,7 +140,7 @@ const AppProvider = ({ children }) => {
                 '/api/v1/auth/register',
                 currentUser
             );
-            console.log({ response });
+
             const { user, token, location } = response.data;
             dispatch({
                 type: REGISTER_USER_SUCCESS,
@@ -150,7 +149,6 @@ const AppProvider = ({ children }) => {
             // save in LocalStorage
             addUserToLocalStorage({ user, token, location });
         } catch (error) {
-            console.log(error.response);
             dispatch({
                 type: REGISTER_USER_ERROR,
                 payload: { msg: error.response.data.msg },
@@ -177,7 +175,6 @@ const AppProvider = ({ children }) => {
             // save in LocalStorage
             addUserToLocalStorage({ user, token, location });
         } catch (error) {
-            console.log('ERR: ', error.response);
             dispatch({
                 type: LOGIN_USER_ERROR,
                 payload: { msg: error.response.data.msg },
@@ -195,7 +192,7 @@ const AppProvider = ({ children }) => {
                 '/auth/updateUser',
                 currentUsers
             );
-            console.log('udateData: ', data);
+
             const { user, token, location } = data;
             dispatch({
                 type: UPDATE_USER_SUCCESS,
@@ -203,7 +200,6 @@ const AppProvider = ({ children }) => {
             });
             addUserToLocalStorage({ user, token, location });
         } catch (err) {
-            console.log('UpdateData', err.response);
             if (err.response.status !== 401) {
                 dispatch({
                     type: UPDATE_USER_ERROR,
@@ -268,8 +264,9 @@ const AppProvider = ({ children }) => {
     };
     // Get all jobs
     const getJobs = async () => {
-        const { search, searchStatus, searchType, sort } = state;
-        let url = `jobs?status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
+        const { page, search, searchStatus, searchType, sort } = state;
+        let url = `jobs?page=${page}&status=${searchStatus}&jobType=${searchType}&sort=${sort}`;
+
         if (search) {
             url = url + `&search=${search}`;
         }
@@ -283,7 +280,6 @@ const AppProvider = ({ children }) => {
                 payload: { jobs, totalJobs, numOfPages },
             });
         } catch (error) {
-            console.log(error.response);
             logoutUser();
         }
         removeAlert();
@@ -335,7 +331,6 @@ const AppProvider = ({ children }) => {
             await authFetch.delete(`/jobs/${id}`);
             getJobs();
         } catch (error) {
-            console.log(error.response.data.msg);
             logoutUser();
         }
     };
@@ -354,8 +349,7 @@ const AppProvider = ({ children }) => {
                 },
             });
         } catch (error) {
-            console.log(error.response);
-            // logoutUser()
+            logoutUser();
         }
         removeAlert();
     };
@@ -363,6 +357,11 @@ const AppProvider = ({ children }) => {
     // Form search
     const clearFilter = () => {
         dispatch({ type: CLEAR_FILTERS });
+    };
+
+    // change Page
+    const changePage = (page) => {
+        dispatch({ type: CHANGE_PAGE, payload: { page } });
     };
 
     return (
@@ -384,6 +383,7 @@ const AppProvider = ({ children }) => {
                 editJob,
                 showStats,
                 clearFilter,
+                changePage,
             }}
         >
             {children}
