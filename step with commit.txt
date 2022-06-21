@@ -150,4 +150,9 @@ SECTION 39: Show stats
 - Tạo cấu trúc như get job vậy, cũng 1 file nhỏ sau đó impoirt từ từ vào các file lớn hơn
 Nhớ nguyên tắc là props truyền từ cha xuống con, chuyền từ từ như vậy
 
+SECTION 41:
+- video 169: Xử lý phần chartContainer
 
+- video 170, 171: giới thiệu 1 thư viện mới barchart
+- video 172: Sử dụng thư viện chart
+- Sử đụng được thư viện để thêm 2 biểu đồ, đường và cột vào trong pr
